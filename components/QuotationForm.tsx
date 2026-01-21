@@ -24,6 +24,8 @@ export default function QuotationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [category, setCategory] = useState('general');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -63,6 +65,11 @@ export default function QuotationForm() {
     }
     if (!formData.expected_size?.trim()) {
       setErrorMessage('예상 규모를 입력해주세요.');
+      return false;
+    }
+    // 개인정보 동의 확인
+    if (!privacyAgreed) {
+      setErrorMessage('개인정보 수집 및 이용에 동의해주세요.');
       return false;
     }
     return true;
@@ -126,6 +133,25 @@ export default function QuotationForm() {
   return (
     <div className="bg-white rounded-lg shadow-lg p-8">
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* 문의 카테고리 */}
+        <div>
+          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+            문의 유형 <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="general">일반 문의</option>
+            <option value="project">프로젝트 견적</option>
+            <option value="partnership">협업 제안</option>
+            <option value="support">기술 지원</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+
         {/* 프로젝트명 */}
         <div>
           <label htmlFor="project_name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -280,6 +306,37 @@ export default function QuotationForm() {
             rows={4}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
+        </div>
+
+        {/* 개인정보 수집 및 이용 동의 */}
+        <div className="border-t border-gray-200 pt-6">
+          <div className="bg-gray-50 p-4 rounded-lg mb-4">
+            <h3 className="font-semibold text-gray-900 mb-2">개인정보 수집 및 이용 안내</h3>
+            <div className="text-sm text-gray-700 space-y-2">
+              <p><strong>수집 항목:</strong> 프로젝트명, 회사명, 문의자명, 이메일, 연락처</p>
+              <p><strong>이용 목적:</strong> 견적 문의 응대 및 상담 서비스 제공</p>
+              <p><strong>보유 기간:</strong> 문의일로부터 3년</p>
+              <p className="text-gray-600">
+                * 자세한 내용은{' '}
+                <a href="/privacy" target="_blank" className="text-blue-600 hover:underline">
+                  개인정보처리방침
+                </a>
+                을 확인해주세요.
+              </p>
+            </div>
+          </div>
+          
+          <label className="flex items-start cursor-pointer">
+            <input
+              type="checkbox"
+              checked={privacyAgreed}
+              onChange={(e) => setPrivacyAgreed(e.target.checked)}
+              className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <span className="ml-3 text-sm text-gray-700">
+              개인정보 수집 및 이용에 동의합니다. <span className="text-red-500">*</span>
+            </span>
+          </label>
         </div>
 
         {/* 에러 메시지 */}

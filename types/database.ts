@@ -165,6 +165,99 @@ export type Database = {
         }
         Relationships: []
       }
+      news: {
+        Row: {
+          news_id: number
+          title: string
+          slug: string
+          category: string
+          summary: string | null
+          content: string
+          thumbnail_url: string | null
+          author: string | null
+          published_date: string | null
+          is_published: boolean
+          view_count: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          news_id?: number
+          title: string
+          slug: string
+          category: string
+          summary?: string | null
+          content: string
+          thumbnail_url?: string | null
+          author?: string | null
+          published_date?: string | null
+          is_published?: boolean
+          view_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          news_id?: number
+          title?: string
+          slug?: string
+          category?: string
+          summary?: string | null
+          content?: string
+          thumbnail_url?: string | null
+          author?: string | null
+          published_date?: string | null
+          is_published?: boolean
+          view_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      popups: {
+        Row: {
+          popup_id: number
+          title: string
+          content: string
+          image_url: string | null
+          link_url: string | null
+          link_text: string | null
+          start_date: string
+          end_date: string
+          is_active: boolean
+          priority: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          popup_id?: number
+          title: string
+          content: string
+          image_url?: string | null
+          link_url?: string | null
+          link_text?: string | null
+          start_date: string
+          end_date: string
+          is_active?: boolean
+          priority?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          popup_id?: number
+          title?: string
+          content?: string
+          image_url?: string | null
+          link_url?: string | null
+          link_text?: string | null
+          start_date?: string
+          end_date?: string
+          is_active?: boolean
+          priority?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

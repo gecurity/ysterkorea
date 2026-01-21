@@ -1,19 +1,11 @@
-import Link from 'next/link';
 import QuotationForm from '@/components/QuotationForm';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function QuotationPage() {
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* 헤더 */}
-      <header className="border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors">
-              ysterkorea
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* 견적 문의 섹션 */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -26,12 +18,7 @@ export default function QuotationPage() {
         <QuotationForm />
       </section>
 
-      {/* 푸터 */}
-      <footer className="bg-gray-900 text-white py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 ysterkorea. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

@@ -1,17 +1,14 @@
 import Link from 'next/link';
 import CaseStudySearch from '@/components/CaseStudySearch';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Popup from '@/components/Popup';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      {/* 헤더 */}
-      <header className="border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-900">ysterkorea</h1>
-          </div>
-        </div>
-      </header>
+      <Popup />
+      <Header />
 
       {/* 메인 비주얼 섹션 */}
       <section className="relative h-[600px] bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
@@ -27,13 +24,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 제품 솔루션 섹션 */}
+      {/* 제품 소개 섹션 */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">제품 솔루션</h2>
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">제품 소개</h2>
             <p className="text-lg text-gray-600 mb-8">
-              프로젝트에 맞는 최적의 LED 디스플레이 솔루션을 만나보세요
+              프로젝트에 맞는 최적의 LED 디스플레이 제품을 만나보세요
             </p>
             <Link
               href="/solutions"
@@ -46,19 +43,14 @@ export default function Home() {
       </section>
 
       {/* 프로젝트 사례 검색 섹션 */}
-      <section className="bg-gray-50 py-16">
+      <section id="projects" className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">프로젝트 사례</h2>
           <CaseStudySearch />
         </div>
       </section>
 
-      {/* 푸터 */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 ysterkorea. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
