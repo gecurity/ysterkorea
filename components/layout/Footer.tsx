@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 회사 정보 */}
           <div>
-            <h3 className="text-xl font-bold mb-4">ysterkorea</h3>
+            <h3 className="text-xl font-bold mb-4">YSTER KOREA</h3>
             <p className="text-gray-400 mb-4">
               혁신적인 LED 디스플레이 기술로<br />
               건축의 미래를 만들어갑니다
@@ -15,15 +15,16 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-gray-400">
               <p>
                 <span className="font-medium text-gray-300">주소:</span>{' '}
-                서울특별시 강남구 테헤란로 123
+                경기도 평택시 고덕중앙로 290, 9F 944호<br />
+                (에이스퍼스트 고덕)
               </p>
               <p>
                 <span className="font-medium text-gray-300">대표번호:</span>{' '}
-                02-1234-5678
+                031-665-7441
               </p>
               <p>
                 <span className="font-medium text-gray-300">이메일:</span>{' '}
-                contact@ysterkorea.com
+                ysterkorea@naver.com
               </p>
             </div>
           </div>
@@ -42,19 +43,21 @@ export default function Footer() {
                   제품 소개
                 </Link>
               </li>
-              <li>
+              {/* 뉴스룸 - 잠시 숨김 */}
+              {/* <li>
                 <Link href="/news" className="text-gray-400 hover:text-white transition-colors">
                   뉴스룸
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* ESG - 잠시 숨김 */}
+              {/* <li>
                 <Link href="/esg" className="text-gray-400 hover:text-white transition-colors">
                   ESG
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
-                  연락처
+                <Link href="/projects" className="text-gray-400 hover:text-white transition-colors">
+                  프로젝트 사례
                 </Link>
               </li>
               <li>
@@ -113,7 +116,7 @@ export default function Footer() {
         {/* 하단 저작권 */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
           <p>&copy; {new Date().getFullYear()} ysterkorea. All rights reserved.</p>
-          <p className="mt-2">사업자등록번호: 123-45-67890 | 대표이사: 홍길동</p>
+          <p className="mt-2">사업자등록번호: 470-81-01788 | 대표이사: 조화걸</p>
         </div>
       </div>
     </footer>

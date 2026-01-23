@@ -22,7 +22,10 @@ export default function SolutionManager() {
   const [formData, setFormData] = useState<Partial<SolutionInsert>>({
     title: '',
     slug: '',
+    category: '',
     short_description: '',
+    description: '',
+    image_url: '',
     technical_specs: null,
     business_value: '',
     is_active: true,
@@ -58,7 +61,7 @@ export default function SolutionManager() {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -77,7 +80,10 @@ export default function SolutionManager() {
       setFormData({
         title: solution.title,
         slug: solution.slug,
+        category: solution.category || '',
         short_description: solution.short_description || '',
+        description: solution.description || '',
+        image_url: solution.image_url || '',
         technical_specs: solution.technical_specs,
         business_value: solution.business_value || '',
         is_active: solution.is_active,
@@ -90,7 +96,10 @@ export default function SolutionManager() {
       setFormData({
         title: '',
         slug: '',
+        category: '',
         short_description: '',
+        description: '',
+        image_url: '',
         technical_specs: null,
         business_value: '',
         is_active: true,
@@ -106,7 +115,10 @@ export default function SolutionManager() {
     setFormData({
       title: '',
       slug: '',
+      category: '',
       short_description: '',
+      description: '',
+      image_url: '',
       technical_specs: null,
       business_value: '',
       is_active: true,
@@ -124,7 +136,7 @@ export default function SolutionManager() {
       if (technicalSpecsText.trim()) {
         try {
           parsedTechnicalSpecs = JSON.parse(technicalSpecsText) as Database['public']['Tables']['Solutions']['Row']['technical_specs'];
-        } catch (parseError) {
+        } catch {
           alert('technical_specs JSON 형식이 올바르지 않습니다.');
           return;
         }
@@ -135,7 +147,10 @@ export default function SolutionManager() {
         const updateData: SolutionUpdate = {
           title: formData.title,
           slug: formData.slug,
+          category: formData.category || null,
           short_description: formData.short_description || null,
+          description: formData.description || null,
+          image_url: formData.image_url || null,
           technical_specs: parsedTechnicalSpecs,
           business_value: formData.business_value || null,
           is_active: formData.is_active,
@@ -164,7 +179,10 @@ export default function SolutionManager() {
         const insertData: SolutionInsert = {
           title: formData.title!,
           slug: formData.slug!,
+          category: formData.category || null,
           short_description: formData.short_description || null,
+          description: formData.description || null,
+          image_url: formData.image_url || null,
           technical_specs: parsedTechnicalSpecs,
           business_value: formData.business_value || null,
           is_active: formData.is_active ?? true,
@@ -407,16 +425,70 @@ export default function SolutionManager() {
                   />
                 </div>
 
+                {/* 카테고리 */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    카테고리
+                  </label>
+                  <select
+                    name="category"
+                    value={formData.category || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="">카테고리 선택</option>
+                    <option value="outdoor">실외용 LED</option>
+                    <option value="indoor">실내용 LED</option>
+                    <option value="special">특수 LED</option>
+                    <option value="rental">렌탈</option>
+                    <option value="signage">간판</option>
+                  </select>
+                </div>
+
+                {/* 이미지 URL */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    이미지 파일명
+                  </label>
+                  <input
+                    type="text"
+                    name="image_url"
+                    value={formData.image_url || ''}
+                    onChange={handleInputChange}
+                    placeholder="예: indoor-led.jpg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    /public/images/products/ 폴더에 이미지를 넣고 파일명만 입력하세요
+                  </p>
+                </div>
+
                 {/* 짧은 설명 */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    짧은 설명
+                    짧은 설명 (카드용)
                   </label>
                   <textarea
                     name="short_description"
                     value={formData.short_description || ''}
                     onChange={handleInputChange}
-                    rows={3}
+                    rows={2}
+                    placeholder="제품 카드에 표시될 짧은 설명"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+
+                {/* 상세 설명 */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    제품 소개 (상세 페이지용)
+                  </label>
+                  <textarea
+                    name="description"
+                    value={formData.description || ''}
+                    onChange={handleInputChange}
+                    rows={6}
+                    placeholder="제품 상세 페이지에 표시될 긴 설명"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>

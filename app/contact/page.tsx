@@ -176,8 +176,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">내비게이션</p>
-                    <p className="text-gray-600">"ysterkorea 본사" 또는</p>
-                    <p className="text-gray-600">"서울 강남구 테헤란로 123"</p>
+                    <p className="text-gray-600">&ldquo;ysterkorea 본사&rdquo; 또는</p>
+                    <p className="text-gray-600">&ldquo;서울 강남구 테헤란로 123&rdquo;</p>
                   </div>
                 </div>
               </div>

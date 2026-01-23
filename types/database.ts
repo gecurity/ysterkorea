@@ -137,7 +137,10 @@ export type Database = {
           solution_id: number
           title: string
           slug: string
+          category: string | null
           short_description: string | null
+          description: string | null
+          image_url: string | null
           technical_specs: Json | null
           business_value: string | null
           is_active: boolean
@@ -147,7 +150,10 @@ export type Database = {
           solution_id?: number
           title: string
           slug: string
+          category?: string | null
           short_description?: string | null
+          description?: string | null
+          image_url?: string | null
           technical_specs?: Json | null
           business_value?: string | null
           is_active?: boolean
@@ -157,7 +163,10 @@ export type Database = {
           solution_id?: number
           title?: string
           slug?: string
+          category?: string | null
           short_description?: string | null
+          description?: string | null
+          image_url?: string | null
           technical_specs?: Json | null
           business_value?: string | null
           is_active?: boolean

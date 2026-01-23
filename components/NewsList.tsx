@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Database } from '@/types/database';
 import NewsCard from './NewsCard';
@@ -17,11 +17,7 @@ export default function NewsList({ category, limit }: NewsListProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(category || 'all');
 
-  useEffect(() => {
-    loadNews();
-  }, [selectedCategory]);
-
-  const loadNews = async () => {
+  const loadNews = useCallback(async () => {
     setIsLoading(true);
     console.log('[NewsList] 뉴스 데이터 로드 시작');
 
@@ -54,7 +50,11 @@ export default function NewsList({ category, limit }: NewsListProps) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedCategory, limit]);
+
+  useEffect(() => {
+    loadNews();
+  }, [loadNews]);
 
   const categories = [
     { value: 'all', label: '전체' },

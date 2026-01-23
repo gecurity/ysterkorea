@@ -13,11 +13,7 @@ interface NavItem {
 const navigationItems: NavItem[] = [
   {
     label: '회사소개',
-    children: [
-      { label: '회사개요', href: '/about' },
-      { label: '비전 & 미션', href: '/about/vision' },
-      { label: '연혁', href: '/about/history' },
-    ],
+    href: '/about',
   },
   {
     label: '제품 소개',
@@ -27,22 +23,24 @@ const navigationItems: NavItem[] = [
     label: '프로젝트 사례',
     href: '/projects',
   },
-  {
-    label: '뉴스룸',
-    children: [
-      { label: '전체 뉴스', href: '/news' },
-      { label: '보도자료', href: '/press' },
-    ],
-  },
-  {
-    label: 'ESG',
-    children: [
-      { label: 'ESG 경영', href: '/esg' },
-      { label: '환경', href: '/esg/environment' },
-      { label: '사회', href: '/esg/social' },
-      { label: '지배구조', href: '/esg/governance' },
-    ],
-  },
+  // 뉴스룸 - 잠시 숨김
+  // {
+  //   label: '뉴스룸',
+  //   children: [
+  //     { label: '전체 뉴스', href: '/news' },
+  //     { label: '보도자료', href: '/press' },
+  //   ],
+  // },
+  // ESG - 잠시 숨김
+  // {
+  //   label: 'ESG',
+  //   children: [
+  //     { label: 'ESG 경영', href: '/esg' },
+  //     { label: '환경', href: '/esg/environment' },
+  //     { label: '사회', href: '/esg/social' },
+  //     { label: '지배구조', href: '/esg/governance' },
+  //   ],
+  // },
   {
     label: '견적 문의',
     href: '/quotation',

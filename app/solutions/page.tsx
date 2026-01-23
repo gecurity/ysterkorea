@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Suspense } from 'react';
 import SolutionList from '@/components/SolutionList';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -22,15 +22,9 @@ export default function SolutionsPage() {
               프로젝트에 맞는 최적의 LED 디스플레이 제품을 만나보세요
             </p>
           </div>
-          <SolutionList />
-          <div className="text-center mt-12">
-            <Link
-              href="/quotation"
-              className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              견적 문의 요청
-            </Link>
-          </div>
+          <Suspense fallback={<div className="text-center py-12 text-gray-600">로딩 중...</div>}>
+            <SolutionList />
+          </Suspense>
         </div>
       </section>
 

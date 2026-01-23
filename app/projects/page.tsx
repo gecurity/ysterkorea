@@ -35,24 +35,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* 프로젝트 문의 CTA */}
-      <section className="bg-blue-600 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            귀사의 프로젝트도 성공 사례로 만들어드립니다
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            전문 상담을 통해 최적의 LED 디스플레이 솔루션을 제안해드립니다
-          </p>
-          <a
-            href="/quotation"
-            className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
-          >
-            프로젝트 문의하기
-          </a>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );

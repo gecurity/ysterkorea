@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <div className="prose prose-lg max-w-none">
           <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
             <p className="text-gray-700">
-              (주)ysterkorea(이하 "회사")는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령이 정한 바를 준수하여,
+              (주)ysterkorea(이하 &ldquo;회사&rdquo;)는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령이 정한 바를 준수하여,
               적법하게 개인정보를 처리하고 안전하게 관리하고 있습니다.
             </p>
             <p className="text-sm text-gray-600 mt-4">시행일자: 2024년 1월 1일</p>
